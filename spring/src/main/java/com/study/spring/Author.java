@@ -2,8 +2,17 @@ package com.study.spring;
 
 public class Author {
 	private String name;
-	private char sex;
+	private Character sex;
 	private Integer age;
+
+	public Author() {
+	}
+	
+	public Author(String name, Character sex, Integer age) {
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+	}
 
 	public String getName() {
 		return name;
@@ -17,7 +26,7 @@ public class Author {
 		return sex;
 	}
 
-	public void setSex(char sex) {
+	public void setSex(Character sex) {
 		this.sex = sex;
 	}
 
