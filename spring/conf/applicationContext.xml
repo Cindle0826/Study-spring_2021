@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="author" scope="singleton"
@@ -19,10 +21,38 @@
 
 	<bean id="author2" scope="prototype"
 		class="com.study.spring.Author">
-		<constructor-arg value="Mary" index="0" ></constructor-arg>
+		<constructor-arg value="Mary" index="0"></constructor-arg>
 		<constructor-arg value="女" index="1"></constructor-arg>
 		<constructor-arg value="16" index="2"></constructor-arg>
-		</bean>
+	</bean>
+
+	<bean id="author3" class="com.study.spring.Author" p:name="Helen"
+		p:sex="女" p:age="20"></bean>
+
+	<bean id="author4" class="com.study.spring.Author" c:name="Yun"
+		c:age="23" c:sex="男">
+
+	</bean>
+
+	<bean id="book1" class="com.study.spring.Book" p:name="Spring"
+		p:price="500" p:author-ref="author">
+
+	</bean>
+
+	<bean id="book2" class="com.study.spring.Book" c:name="Python"
+		c:price="50" c:author-ref="author2">
+
+	</bean>
+
+	<bean id="husband" class="com.study.spring.Husband" p:name="John"
+		p:wife-ref="wife">
+
+	</bean>
+
+	<bean id="wife" class="com.study.spring.Wife" p:name="Mary"
+		p:husband-ref="husband">
+
+	</bean>
 
 
 

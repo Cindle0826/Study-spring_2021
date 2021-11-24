@@ -1,0 +1,20 @@
+package com.study.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainTest2 {
+	/**
+	 * 互相參造會遞迴
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Husband husband = (Husband) ctx.getBean("husband");
+		Wife wife = (Wife) ctx.getBean("wife");
+		System.out.println(husband);
+		System.out.println(wife);
+	}
+}
+
+
