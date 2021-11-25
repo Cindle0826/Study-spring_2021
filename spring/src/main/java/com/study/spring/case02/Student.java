@@ -1,8 +1,19 @@
 package com.study.spring.case02;
 
+import java.util.Set;
+
 public class Student {
 	private Integer id;
 	private String name;
+	private Set<Clazz> clazzs;
+
+	public Set<Clazz> getClazzs() {
+		return clazzs;
+	}
+
+	public void setClazzs(Set<Clazz> clazzs) {
+		this.clazzs = clazzs;
+	}
 
 	public Student() {
 		System.out.println("constructor");
@@ -35,7 +46,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + "]";
+		return "Student [id=" + id + ", name=" + name + ", clazzs=" + clazzs + "]";
 	}
 
 }
