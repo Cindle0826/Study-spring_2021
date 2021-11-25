@@ -5,7 +5,8 @@ public class Student {
 	private String name;
 
 	public Student() {
-		System.out.println("Student() constructor");
+		System.out.println("constructor");
+		System.out.println(super.toString());
 	}
 
 	public void intit() {
@@ -30,6 +31,11 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + "]";
 	}
 
 }
