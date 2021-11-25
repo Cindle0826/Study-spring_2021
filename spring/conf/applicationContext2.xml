@@ -2,7 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 資源文件加載 -->
+	<!--<bean
+			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="user.properties"></property>
+		</bean> -->
+	
+	<!-- 使用Context加載 -->
+	<context:property-placeholder location="user.properties"/>
 
 	<bean id="clazz1" class="com.study.spring.case02.Clazz" p:id="501"
 		p:name="Progeam" p:credit="3"></bean>
@@ -16,7 +29,7 @@
 		init-method="intit" destroy-method="destory">
 		<property name="clazzs">
 			<set>
-				<ref bean="clazz1"  />
+				<ref bean="clazz1" />
 				<ref bean="clazz3" />
 				<ref bean="clazz3" />
 			</set>
@@ -61,5 +74,68 @@
 				<ref bean="student3" />
 			</set>
 		</property>
+
+		<property name="subjects">
+			<list>
+				<value>Program</value>
+				<value>Math</value>
+				<value>English</value>
+				<value>Chinese</value>
+			</list>
+		</property>
+
+		<property name="salary">
+			<map>
+				<entry key="base">
+					<value>50000</value>
+				</entry>
+				<entry key="Addition">
+					<value>20000</value>
+				</entry>
+			</map>
+		</property>
 	</bean>
+
+	<bean id="teacher2" class="com.study.spring.case02.Teacher"
+		p:id="2" p:name="Jo" p:students-ref="students"
+		p:subjects-ref="subjects" p:salary-ref="salary">
+	</bean>
+
+	<!-- 外部配置 可以用在Database -->	
+	<bean id="teacher3" class="com.study.spring.case02.Teacher"
+		p:id="${teacher.id}" p:name="${teacher.name}" p:students-ref="students"
+		p:subjects-ref="subjects" p:salary-ref="salary">
+	</bean>
+
+	<!-- util要寫在Bean外 -->
+
+	<util:set id="students">
+		<ref bean="student1" />
+		<ref bean="student3" />
+	</util:set>
+
+	<util:list id="subjects">
+		<value>Java</value>
+		<value>VB</value>
+	</util:list>
+
+	<util:map id="salary">
+		<entry>
+			<key>
+				<value>base</value>
+			</key>
+			<value>60000</value>
+		</entry>
+		<entry>
+			<key>
+				<value>addition</value>
+			</key>
+			<value>25000</value>
+		</entry>
+	</util:map>
+	
+	<bean id="carFactory" class="com.study.spring.case02.CarFactory" />
+	
+
+
 </beans>
