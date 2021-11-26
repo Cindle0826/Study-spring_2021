@@ -1,4 +1,4 @@
-package com.study.spring;
+package com.study.spring.case01;
 
 public class Book {
 	private String name;

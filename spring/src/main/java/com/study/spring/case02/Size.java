@@ -1,6 +1,6 @@
 package com.study.spring.case02;
 
-public class color {
+public class Size {
 	private Integer id;
 	private String name;
 
@@ -22,7 +22,7 @@ public class color {
 
 	@Override
 	public String toString() {
-		return "color [id=" + id + ", name=" + name + "]";
+		return "Size [id=" + id + ", name=" + name + "]";
 	}
 
 }

@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="author" scope="singleton"
-		class="com.study.spring.Author">
+		class="com.study.spring.case01.Author">
 		<property name="name">
 			<value>John</value>
 		</property>
@@ -20,36 +20,36 @@
 	</bean>
 
 	<bean id="author2" scope="prototype"
-		class="com.study.spring.Author">
+		class="com.study.spring.case01.Author">
 		<constructor-arg value="Mary" index="0"></constructor-arg>
 		<constructor-arg value="女" index="1"></constructor-arg>
 		<constructor-arg value="16" index="2"></constructor-arg>
 	</bean>
 
-	<bean id="author3" class="com.study.spring.Author" p:name="Helen"
+	<bean id="author3" class="com.study.spring.case01.Author" p:name="Helen"
 		p:sex="女" p:age="20"></bean>
 
-	<bean id="author4" class="com.study.spring.Author" c:name="Yun"
+	<bean id="author4" class="com.study.spring.case01.Author" c:name="Yun"
 		c:age="23" c:sex="男">
 
 	</bean>
 
-	<bean id="book1" class="com.study.spring.Book" p:name="Spring"
+	<bean id="book1" class="com.study.spring.case01.Book" p:name="Spring"
 		p:price="500" p:author-ref="author">
 
 	</bean>
 
-	<bean id="book2" class="com.study.spring.Book" c:name="Python"
+	<bean id="book2" class="com.study.spring.case01.Book" c:name="Python"
 		c:price="50" c:author-ref="author2">
 
 	</bean>
 
-	<bean id="husband" class="com.study.spring.Husband" p:name="John"
+	<bean id="husband" class="com.study.spring.case01.Husband" p:name="John"
 		p:wife-ref="wife">
 
 	</bean>
 
-	<bean id="wife" class="com.study.spring.Wife" p:name="Mary"
+	<bean id="wife" class="com.study.spring.case01.Wife" p:name="Mary"
 		p:husband-ref="husband">
 
 	</bean>

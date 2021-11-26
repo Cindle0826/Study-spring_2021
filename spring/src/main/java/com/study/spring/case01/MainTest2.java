@@ -1,4 +1,4 @@
-package com.study.spring;
+package com.study.spring.case01;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

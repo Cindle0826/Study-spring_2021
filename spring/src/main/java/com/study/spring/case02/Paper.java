@@ -1,10 +1,17 @@
 package com.study.spring.case02;
 
-import com.github.javafaker.Color;
-
 public class Paper {
 	private Integer id;
 	private Color color;
+	private Size size;
+
+	public Size getSize() {
+		return size;
+	}
+
+	public void setSize(Size size) {
+		this.size = size;
+	}
 
 	public Integer getId() {
 		return id;
@@ -24,7 +31,7 @@ public class Paper {
 
 	@Override
 	public String toString() {
-		return "Paper [id=" + id + ", color=" + color + "]";
+		return "Paper [id=" + id + ", color=" + color + ", size=" + size + "]";
 	}
 
 }
