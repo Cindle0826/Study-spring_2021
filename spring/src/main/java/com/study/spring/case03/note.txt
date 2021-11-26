@@ -12,3 +12,4 @@ Service 在得到 DAO物件
 
 @Autowired(required = false) 自動裝配時 不一定要有物件
 自動裝配順序 先進行byType 在 byName
+@Qualifier(value = "userDaoDerbyImpl") = byName
