@@ -1,0 +1,14 @@
+										三層式架構
+										
+Client -> Controller -> Service -> DAO -> DataBase   
+
+Client <- Controller <- Service <- DAO <- DataBase
+
+Controller 先得到 service 物件 
+Service 在得到 DAO物件
+三層連在一起        
+
+使用Spring 三層式架構時 盡量不要new 會影響效能
+
+@Autowired(required = false) 自動裝配時 不一定要有物件
+自動裝配順序 先進行byType 在 byName
