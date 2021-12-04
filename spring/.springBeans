@@ -12,6 +12,7 @@
 		<config>conf/applicationContext3.xml</config>
 		<config>conf/aopConfig.xml</config>
 		<config>conf/aopxml.xml</config>
+		<config>conf/jdbc-config.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

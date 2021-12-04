@@ -8,6 +8,17 @@ public class Main {
 		// Java 配置
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AOPConfig.class);
 		Performance performance = (Performance) ctx.getBean("dancer");
-		performance.perform();
+		try {
+			performance.perform();                   			
+		} catch (Exception e) {
+			System.out.println(e);
+			// 轉換跑道
+			// 舞者轉唱歌
+			Singer singer = (Singer) performance;
+			singer.sing();
+			
+			Actor actor = (Actor) performance;
+			actor.show();
+		}
 	}
 }

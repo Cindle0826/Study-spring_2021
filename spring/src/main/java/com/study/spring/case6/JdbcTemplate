@@ -1,0 +1,61 @@
+// 多筆查詢
+String sql = "SELECT eid,ename,age,createtime from Emp";
+List<Map<String, Object>> emps =  jdbcTemplate.queryForList(sql);
+for(Map<String,Object> emp: emps) {
+	System.out.println(emp.get("ename"));
+
+// 單筆單欄
+// 現在	emp 資料表中有幾筆資料?	
+sql = "SELECT count(*) from Emp";
+Integer count = jdbcTemplate.queryForObject(sql,Integer.class);
+System.out.println("資料筆數: " + count);	
+
+//多筆查詢 RowMapper API 	T mapRow(ResultSet rs, int rowNum) throws SQLException;
+ sql = "SELECT eid,ename,age,createtime from emp";
+ List<Emp> listEmps = jdbcTemplate.query(sql, (ResultSet rs, int rowNum) -> {
+	 Emp emp = new Emp();
+	 Integer eid =  rs.getInt("eid");
+	 String ename =  rs.getString("ename");
+	 Integer age =  rs.getInt("age");
+	 Date createtime =  rs.getDate("createtime");
+	 emp.setEid(eid);
+	 emp.setEname(ename);
+	 emp.setAge(age);
+	 emp.setCreatetime(createtime);
+	 return emp;
+	 
+ });
+ System.out.println(listEmps);
+ 
+//多筆查詢-BeanPropertyRowMapper
+// 類似於 BeanUtils 資料庫與物件屬性名稱進行比對 比對成功就直接回傳
+sql = "SELECT eid,ename,age,createtime from Emp";
+List<Emp> listEmps2 = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Emp.class));
+System.out.println(listEmps2);
+
+// BatchPreparedStatementSetter() 多比的意思
+public void case3() {
+			String sql = "Insert into emp(ename,age) VALUES(?,?)";
+			List<Emp> emps = Arrays.asList(
+					new Emp("Yun2",30),
+					new Emp("Cindle", 28)
+					);
+			BatchPreparedStatementSetter setter = new BatchPreparedStatementSetter() {
+				
+				@Override
+				public void setValues(PreparedStatement ps, int i) throws SQLException {
+					// i = emps 的index
+					ps.setString(1, emps.get(i).getEname());
+					ps.setInt(2, emps.get(i).getAge());
+					
+				}
+				
+				@Override
+				public int getBatchSize() {
+					return emps.size();
+				}
+			};
+			int [] rows = jdbcTemplate.batchUpdate(sql,setter);
+			System.out.println(Arrays.toString(rows));
+
+

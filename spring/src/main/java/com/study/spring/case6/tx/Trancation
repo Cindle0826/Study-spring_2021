@@ -1,0 +1,17 @@
+@Transactional(
+propagation = Propagation.REQUIRED
+	propagation = Propagation.REQUIRED //預設	
+	propagation = Propagation.REQUIRES_NEW 
+	isolation =  Isolation.READ_UNCOMMITTED // 可以讀取還沒提交的資料
+	isolation = Isolation.READ_COMMITTED //只讀已經確認的資料
+	isolation = Isolation.REPEATABLE_READ //預設 要求多次讀取資料必須相同
+	timeout = 3 //超時
+	readOnly = false //資料庫不鎖定能進行 C R U D 
+	rollbackFor = {InsufficientAmount.class,InsufficientQuantity.class} // 回滾
+	noRollbackFor = {} //不回滾
+
+	Propagation.REQUIRED  傳播值 必須要有交易 不寫也可以 (預設) Propagation.REQUIRES_NEW 不會受繼承影響
+	isolation = Isolation.SERIALIZABLE 隔離值 
+	timeout = 3 最大交易時間 3秒
+)
+			 
